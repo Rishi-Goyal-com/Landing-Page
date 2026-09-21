@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 import { FaEnvelope, FaMobileAlt } from 'react-icons/fa'
 import { CheckCircle2, XCircle } from 'lucide-react'
@@ -62,21 +63,37 @@ export function ContactSection() {
             <Input type="email" name="email" placeholder="Email" required />
           </div>
           <Textarea name="message" placeholder="Message" rows={4} required />
-          <Button type="submit" disabled={status === 'sending'} className="w-fit">
-            {status === 'sending' ? 'Sending...' : 'Send Message'}
-          </Button>
-          {status === 'sent' && (
-            <p className="flex items-center gap-2 text-sm text-emerald-400">
-              <CheckCircle2 className="size-4" />
-              Thanks for reaching out — I'll get back to you soon.
-            </p>
-          )}
-          {status === 'error' && (
-            <p className="flex items-center gap-2 text-sm text-destructive">
-              <XCircle className="size-4" />
-              Something went wrong sending your message. Please try again later.
-            </p>
-          )}
+          <motion.span className="inline-block w-fit" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button type="submit" disabled={status === 'sending'} className="w-fit">
+              {status === 'sending' ? 'Sending...' : 'Send Message'}
+            </Button>
+          </motion.span>
+          <AnimatePresence mode="wait">
+            {status === 'sent' && (
+              <motion.p
+                key="sent"
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                className="flex items-center gap-2 text-sm text-emerald-400"
+              >
+                <CheckCircle2 className="size-4" />
+                Thanks for reaching out — I'll get back to you soon.
+              </motion.p>
+            )}
+            {status === 'error' && (
+              <motion.p
+                key="error"
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                className="flex items-center gap-2 text-sm text-destructive"
+              >
+                <XCircle className="size-4" />
+                Something went wrong sending your message. Please try again later.
+              </motion.p>
+            )}
+          </AnimatePresence>
         </form>
         <ul className="space-y-5">
           <li>

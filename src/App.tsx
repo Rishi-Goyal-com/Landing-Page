@@ -2,6 +2,7 @@ import { AboutSection } from '@/components/about-section'
 import { ContactSection } from '@/components/contact-section'
 import { ExperienceSection } from '@/components/experience-section'
 import { ProjectsSection } from '@/components/projects-section'
+import { ScrollCharacter } from '@/components/scroll-character'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { SiteNav } from '@/components/site-nav'
@@ -42,6 +43,7 @@ function App() {
       <div className="pointer-events-none fixed inset-0 -z-10 bg-gradient-to-b from-background/10 via-background/15 to-background" />
 
       <SiteNav />
+      <ScrollCharacter />
       <SiteHeader />
       <main>
         <AboutSection />

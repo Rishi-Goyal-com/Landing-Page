@@ -1,6 +1,17 @@
+import { motion } from 'framer-motion'
 import { Reveal } from '@/components/reveal'
 import { SectionShell } from '@/components/section-shell'
 import { skillCategories } from '@/data/skills'
+
+const badgeContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.04 } },
+}
+
+const badgeItem = {
+  hidden: { opacity: 0, y: 12, scale: 0.9 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring' as const, stiffness: 200, damping: 18 } },
+}
 
 export function SkillsSection() {
   return (
@@ -18,17 +29,25 @@ export function SkillsSection() {
             <h3 className="mb-4 text-sm font-semibold text-muted-foreground">
               {category.title}
             </h3>
-            <div className="flex flex-wrap gap-2">
+            <motion.div
+              variants={badgeContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: '-60px' }}
+              className="flex flex-wrap gap-2"
+            >
               {category.skills.map((skill) => (
-                <div
+                <motion.div
                   key={skill.name}
-                  className="group flex items-center gap-2 rounded-full border border-border/60 bg-card px-3 py-1.5 text-sm transition-all hover:-translate-y-0.5 hover:border-transparent hover:glow-ring"
+                  variants={badgeItem}
+                  whileHover={{ y: -3, scale: 1.05 }}
+                  className="group flex items-center gap-2 rounded-full border border-border/60 bg-card px-3 py-1.5 text-sm transition-colors hover:border-transparent hover:glow-ring"
                 >
                   <skill.icon className="size-4 text-muted-foreground transition-colors group-hover:text-foreground" />
                   {skill.name}
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </Reveal>
         ))}
       </div>
