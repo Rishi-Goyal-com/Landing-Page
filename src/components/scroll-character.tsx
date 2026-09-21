@@ -3,7 +3,7 @@ import { useActiveSection } from '@/hooks/use-active-section'
 import { useScrollProgress } from '@/hooks/use-scroll-progress'
 
 const captions: Record<string, string> = {
-  top: "Hi, I'm Rishi — scroll along with me!",
+  top: "Hi, I'm Rishi. Scroll along with me!",
   about: 'A bit about me...',
   skills: "Here's what I build with.",
   experience: "Where I've worked...",
