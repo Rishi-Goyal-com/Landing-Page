@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { GraduationCap, MapPin, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Reveal } from '@/components/reveal'
@@ -33,13 +34,14 @@ export function AboutSection() {
             Explore my projects to see how I combine creativity, code, and
             curiosity to solve problems that matter.
           </p>
-          <Button
-            className="mt-6"
-            nativeButton={false}
-            render={<a href="/Resume.pdf" target="_blank" rel="noreferrer" />}
-          >
-            Download Resume
-          </Button>
+          <motion.span className="mt-6 inline-block" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button
+              nativeButton={false}
+              render={<a href="/Resume.pdf" target="_blank" rel="noreferrer" />}
+            >
+              Download Resume
+            </Button>
+          </motion.span>
         </Reveal>
 
         <Reveal delay={200} className="rounded-2xl border border-border/60 bg-card/80 p-5 backdrop-blur-sm">

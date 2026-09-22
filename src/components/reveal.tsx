@@ -1,6 +1,5 @@
+import { motion } from 'framer-motion'
 import type { ReactNode } from 'react'
-import { useInView } from '@/hooks/use-in-view'
-import { cn } from '@/lib/utils'
 
 export function Reveal({
   children,
@@ -11,19 +10,15 @@ export function Reveal({
   className?: string
   delay?: number
 }) {
-  const { ref, inView } = useInView<HTMLDivElement>()
-
   return (
-    <div
-      ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
-      className={cn(
-        'transition-all duration-700 ease-out',
-        inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0',
-        className,
-      )}
+    <motion.div
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ type: 'spring', stiffness: 90, damping: 18, delay: delay / 1000 }}
+      className={className}
     >
       {children}
-    </div>
+    </motion.div>
   )
 }
