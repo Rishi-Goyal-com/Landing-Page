@@ -28,13 +28,16 @@ export function ScrollCharacter() {
   const activeId = useActiveSection()
 
   return (
-    <div className="pointer-events-none fixed right-4 bottom-4 z-40 sm:right-6 sm:bottom-6">
+    <div className="pointer-events-none fixed right-3 bottom-3 z-40 sm:right-6 sm:bottom-6">
+      {/* The caption bubble needs real screen space to its upper-left, which
+          mobile layouts don't reliably have (it ends up overlapping page
+          content) — so it only shows from `sm:` up. */}
       <motion.div
         key={`caption-${activeId}`}
         initial={{ opacity: 0, y: 8, scale: 0.9 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.25 }}
-        className="absolute right-0 bottom-full mb-3 w-48 rounded-2xl border border-white/10 bg-background/85 px-3 py-2 text-xs font-medium text-foreground shadow-lg backdrop-blur-md sm:w-56"
+        className="absolute right-0 bottom-full mb-3 hidden w-56 rounded-2xl border border-white/10 bg-background/85 px-3 py-2 text-xs font-medium text-foreground shadow-lg backdrop-blur-md sm:block"
       >
         {captions[activeId] ?? captions.top}
       </motion.div>

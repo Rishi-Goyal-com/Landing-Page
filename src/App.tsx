@@ -12,13 +12,11 @@ import { useScrollProgress } from '@/hooks/use-scroll-progress'
 function App() {
   const scrollProgress = useScrollProgress()
 
-  // Color-grade the same photo from a cool daytime look to a warm sunset
-  // look as the page scrolls, instead of swapping to a different photo.
-  // sepia's target hue (~35-40°) already lands close to a real sunset's
-  // orange-brown family, sampled from a reference sunset photo of the same
-  // skyline (horizon glow ~#f68709, silhouette ~#5d361a) — so hue-rotate is
-  // dropped entirely rather than fighting sepia's natural direction, and
-  // brightness/contrast lean toward that dark, warm silhouette look.
+  // Color-grade the same photo from a cool, bright daytime look to a warm
+  // golden-hour look as the page scrolls, instead of swapping to a different
+  // photo. sepia's target hue (~35-40°) already lands close to warm evening
+  // light, so hue-rotate is dropped entirely rather than fighting sepia's
+  // natural direction, and brightness/contrast lean toward a moodier look.
   const dayToSunsetFilter = [
     `brightness(${1 - 0.32 * scrollProgress})`,
     `saturate(${1 + 0.5 * scrollProgress})`,
@@ -29,11 +27,11 @@ function App() {
   return (
     <div className="relative isolate min-h-screen text-foreground">
       <img
-        src="/images/toronto-skyline.jpg"
+        src="/images/office.jpg"
         alt=""
         aria-hidden="true"
         style={{ filter: dayToSunsetFilter }}
-        className="fixed inset-0 -z-10 h-full w-full object-cover object-[20%_35%] transition-[filter] duration-150 ease-out"
+        className="fixed inset-0 -z-10 h-full w-full object-cover object-center transition-[filter] duration-150 ease-out"
       />
       <div
         aria-hidden="true"

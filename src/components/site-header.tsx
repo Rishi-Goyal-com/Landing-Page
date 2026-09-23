@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { FaEnvelope, FaLinkedin } from 'react-icons/fa'
+import { HangingIdCard } from '@/components/hanging-id-card'
 import { Button } from '@/components/ui/button'
 
 const container = {
@@ -22,7 +23,7 @@ export function SiteHeader() {
   return (
     <header
       id="top"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 py-32 text-center"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 py-16 text-center"
     >
       <motion.div
         variants={container}
@@ -30,29 +31,11 @@ export function SiteHeader() {
         animate="show"
         className="relative z-10 flex flex-col items-center gap-6"
       >
-        <motion.div
-          variants={item}
-          animate={{ y: [0, -10, 0] }}
-          transition={{ y: { repeat: Infinity, duration: 5, ease: 'easeInOut' } }}
-        >
-          <a
-            href="https://www.linkedin.com/in/rishigoyal1/"
-            target="_blank"
-            rel="noreferrer"
-            className="glow-ring block h-28 w-28 overflow-hidden rounded-full border-2 border-white/20"
-          >
-            <img
-              src="/images/rishi.jpg"
-              alt="Rishi Goyal"
-              className="h-full w-full object-cover"
-            />
-          </a>
+        <motion.div variants={item}>
+          <HangingIdCard />
         </motion.div>
 
-        <motion.div variants={item} className="space-y-3">
-          <h1 className="text-3xl font-bold text-white [filter:drop-shadow(0_0_10px_rgba(255,255,255,0.95))_drop-shadow(0_0_28px_rgba(255,255,255,0.85))_drop-shadow(0_0_60px_rgba(255,255,255,0.6))] sm:text-5xl">
-            Hi, I'm <span className="text-gradient">Rishi Goyal</span>
-          </h1>
+        <motion.div variants={item}>
           <p className="text-base text-white/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)] sm:text-lg">
             Web Developer at ARIES · AI Student at Centennial College
           </p>
