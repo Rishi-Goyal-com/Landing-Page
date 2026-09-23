@@ -26,30 +26,32 @@ export function SiteNav() {
         <a href="#top" className="shrink-0 text-sm font-semibold tracking-wide">
           Rishi<span className="text-gradient">.dev</span>
         </a>
-        <ul className="no-scrollbar flex gap-4 overflow-x-auto text-xs text-muted-foreground sm:gap-8 sm:text-sm">
-          {links.map((link) => (
-            <li key={link.href} className="shrink-0">
-              <a
-                href={link.href}
-                className={cn(
-                  'relative inline-block pb-1 transition-colors hover:text-foreground',
-                  active === link.href && 'text-foreground',
-                )}
-              >
-                {link.label}
-                {active === link.href && (
-                  <motion.span
-                    layoutId="nav-underline"
-                    className="absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-gradient-to-r from-cyan-400 to-violet-400"
-                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                  />
-                )}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="min-w-0 flex-1 [mask-image:linear-gradient(to_right,black_calc(100%-20px),transparent)]">
+          <ul className="no-scrollbar flex gap-4 overflow-x-auto pr-5 text-xs text-muted-foreground sm:gap-8 sm:text-sm">
+            {links.map((link) => (
+              <li key={link.href} className="shrink-0">
+                <a
+                  href={link.href}
+                  className={cn(
+                    'relative inline-block pb-1 transition-colors hover:text-foreground',
+                    active === link.href && 'text-foreground',
+                  )}
+                >
+                  {link.label}
+                  {active === link.href && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-gradient-to-r from-cyan-400 to-violet-400"
+                      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
         <motion.span
-          className="inline-block shrink-0"
+          className="hidden shrink-0 sm:inline-block"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
