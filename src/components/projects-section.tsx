@@ -73,7 +73,7 @@ export function ProjectsSection() {
         ))}
       </motion.div>
 
-      <Reveal className="mt-10">
+      <Reveal className="mt-10 flex flex-wrap gap-4">
         <motion.span className="inline-block" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <Button
             nativeButton={false}
@@ -86,6 +86,15 @@ export function ProjectsSection() {
             }
           >
             LinkedIn Profile
+          </Button>
+        </motion.span>
+        <motion.span className="inline-block" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <Button
+            variant="outline"
+            nativeButton={false}
+            render={<a href="https://github.com/Rishi-Goyal-com" target="_blank" rel="noreferrer" />}
+          >
+            GitHub Profile
           </Button>
         </motion.span>
       </Reveal>

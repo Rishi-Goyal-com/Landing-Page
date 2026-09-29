@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FaEnvelope, FaLinkedin } from 'react-icons/fa'
+import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa'
 import { HangingIdCard } from '@/components/hanging-id-card'
 import { Button } from '@/components/ui/button'
 
@@ -71,6 +71,15 @@ export function SiteHeader() {
             whileHover={{ scale: 1.2, color: '#ffffff' }}
           >
             <FaLinkedin size={20} />
+          </motion.a>
+          <motion.a
+            href="https://github.com/Rishi-Goyal-com"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub"
+            whileHover={{ scale: 1.2, color: '#ffffff' }}
+          >
+            <FaGithub size={20} />
           </motion.a>
           <motion.a
             href="mailto:rishi_goyal2003@outlook.com"
